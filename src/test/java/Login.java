@@ -104,7 +104,55 @@ public class Login {
         buttonRegistration.click();
 
     }
-    @BeforeMethod
+    @Test
+    public void ccslocatrstest() {
+
+        // нужно перейти на страницу логина, так как на главной странице мало элементов для поиска и тренировки
+        // переход на страницу логина тут:
+        wd.findElement(By.linkText("LOGIN")).click();
+
+        // теперь мы на странице логина и тут будем тренироваться
+        // На странице логин найти несколько элементов по их  tagname
+        WebElement element = wd.findElement(By.tagName("div"));
+        List<WebElement> divs = wd.findElements(By.tagName("div"));
+
+        WebElement input = wd.findElement(By.tagName("input"));
+        List<WebElement> inputs = wd.findElements(By.tagName("input"));
+
+        WebElement button = wd.findElement(By.tagName("button"));
+        List<WebElement> buttons = wd.findElements(By.tagName("button"));
+
+        WebElement el1c =wd.findElement(By.cssSelector("#root"));
+
+        WebElement el2c =wd.findElement(By.cssSelector(".container"));
+        WebElement el3c =wd.findElement(By.cssSelector(".navbar-component_nav__1X_4m"));
+        WebElement el4c =wd.findElement(By.cssSelector(".active"));
+        WebElement el5c =wd.findElement(By.cssSelector(".login_login__3EHKB"));
+        // ON Login PAGE find some elements by class
+
+        // На странице логин найти несколько элементов по их  attribute
+        WebElement el6c =wd.findElement(By.cssSelector("[placeholder = 'Email']"));
+        WebElement el7c =wd.findElement(By.cssSelector("[placeholder = 'Password']"));
+
+        //На странице логин найти  элемент с  атрибутом placeholder, значение которого начинается на "Pass"
+        WebElement el8c =wd.findElement(By.cssSelector("[placeholder ^= 'Pass']"));//starts
+        //На странице логин найти  элемент с  атрибутом placeholder, значение которого  начинается на  "ass"
+        WebElement el9c =wd.findElement(By.cssSelector("[placeholder *= 'ass']"));//contains
+        //На странице логин найти  элемент с  атрибутом placeholder, значение которого заканчивается на "ord"
+        WebElement el10c =wd.findElement(By.cssSelector("[placeholder $= 'ord']"));//ends
+
+        // Объединение !!
+        //найти элемент div, у которого есть id со значением "root"  и класс со значением container
+        // найти элемент а, у которого есть атрибут href со значением /login
+        // найти элемент input, у которого есть атрибут name cо значением email
+        // найти элемент button, у которого есть атрибут name cо значением login
+
+        // Поиск по дочерним элементам (* задание со звездоской)
+        // Найти кнопку регистрации, как последнего ребенка элемента form
+
+
+    }
+        @BeforeMethod
     public void postCondition(){
         // close browser
         //wd.quit();
