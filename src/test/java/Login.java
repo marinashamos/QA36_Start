@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.beans.Transient;
 import java.util.List;
 
 public class Login {
@@ -45,21 +44,20 @@ public class Login {
         // open form
         // wd find item + click
 
-        WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
-        itemLogin.click();
+      WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
+       itemLogin.click();
 
         // fill form
         // find email + click + clear + type
         WebElement email = wd.findElement(By.name("email"));
-        email.click();
+       email.click();
         email.clear();
-        email.sendKeys("dsa+1@gmail.com");
+       email.sendKeys("dsa+1@gmail.com");
 
         // find password + click +clear + type
         WebElement password = wd.findElement(By.name("password"));
         password.click();
-        password.clear();
-        password.sendKeys("Qq12345$");
+        password.clear();password.sendKeys("Qq12345$");
 
         // submit  form
         // find button login + click
@@ -81,39 +79,37 @@ public class Login {
     @Test
     public void registrationSuccess(){
 
-        WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
-        itemLogin.click();
+       WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
+       itemLogin.click();
 
         // fill form
         // find email + click + clear + type
-        WebElement email = wd.findElement(By.name("email"));
-        email.click();
-        email.clear();
-        email.sendKeys("dsa+5@gmail.com");
+     //   WebElement email = wd.findElement(By.name("email"));
+      //  email.click();
+      // email.clear();
+       // email.sendKeys("dsa+9@gmail.com");
 
         // find password + click +clear + type
-        WebElement password = wd.findElement(By.name("password"));
-        password.click();
-        password.clear();
-        password.sendKeys("Qq123456$");
+       // WebElement password = wd.findElement(By.name("password"));
+       // password.click();
+      //  password.clear();
+      //  password.sendKeys("Qq123456$");
 
         // submit  form
         // find button login + click
-        List<WebElement> buttons = wd.findElements(By.tagName("button"));
-        WebElement buttonRegistration = buttons.get(1);
-        buttonRegistration.click();
+      //  List<WebElement> buttons = wd.findElements(By.tagName("button"));
+      //  WebElement buttonRegistration = buttons.get(1);
+      // buttonRegistration.click();
 
     }
     @Test
-    public void ccslocatrstest() {
+    public void ccslocatrtest() {
 
-        // нужно перейти на страницу логина, так как на главной странице мало элементов для поиска и тренировки
-        // переход на страницу логина тут:
         wd.findElement(By.linkText("LOGIN")).click();
 
         // теперь мы на странице логина и тут будем тренироваться
         // На странице логин найти несколько элементов по их  tagname
-        WebElement element = wd.findElement(By.tagName("div"));
+        WebElement div = wd.findElement(By.tagName("div"));
         List<WebElement> divs = wd.findElements(By.tagName("div"));
 
         WebElement input = wd.findElement(By.tagName("input"));
@@ -143,13 +139,23 @@ public class Login {
 
         // Объединение !!
         //найти элемент div, у которого есть id со значением "root"  и класс со значением container
+        WebElement el11c =wd.findElement(By.cssSelector("[id ='root']"));
+        WebElement el12c =wd.findElement(By.cssSelector("[class= 'container']"));
+        WebElement el13c =wd.findElement(By.cssSelector("div#root.container"));
+
         // найти элемент а, у которого есть атрибут href со значением /login
+        WebElement el14c =wd.findElement(By.cssSelector("a[href = '/login']"));
+
         // найти элемент input, у которого есть атрибут name cо значением email
+        WebElement el15c =wd.findElement(By.cssSelector("input[name = 'email']"));
+
         // найти элемент button, у которого есть атрибут name cо значением login
+        WebElement el16c =wd.findElement(By.cssSelector("button[name ='login']"));
 
         // Поиск по дочерним элементам (* задание со звездоской)
         // Найти кнопку регистрации, как последнего ребенка элемента form
 
+        WebElement el17c =wd.findElement(By.cssSelector("form *:last-child"));//Выполнила по аналогии в презентации, недостаточно понимания
 
     }
         @BeforeMethod
