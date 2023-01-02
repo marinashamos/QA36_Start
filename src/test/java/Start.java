@@ -8,7 +8,8 @@ public class Start {
     public void myTest(){
         //open browser
         wd = new ChromeDriver();
-        wd.get("https://telranedu.web.app/");//dva metoda without history
+        wd.get("https://telranedu.web.app/");
+        //dva metoda without history
 
        //wd.navigate().to("https://telranedu.web.app/");// with history pomnit history perexodov
        // wd.navigate().back();
