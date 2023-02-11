@@ -7,155 +7,140 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.print.DocFlavor;
 import java.util.List;
 
-
 public class Login {
-
     WebDriver wd;
-
     @BeforeMethod
-    public void preCondition() {
-        // open browser
+    public void preCondition(){
+        //open browser
         wd = new ChromeDriver();
-        // open site
-        wd.get("https://telranedu.web.app");
+        //open site
+        wd.navigate().to("https://telranedu.web.app/");
     }
 
     @Test
-    public void findElementsOnPage() {
-        // by tagName
+    public void findElementsOnPage(){
+        //by tagName
         WebElement element = wd.findElement(By.tagName("div"));
         List<WebElement> divs = wd.findElements(By.tagName("div"));
 
-        // By id
+        //By id
         WebElement el1 = wd.findElement(By.id("root"));
-        // By class
+
+        //By class
         WebElement el2 = wd.findElement(By.className("container"));
-        // By name
-        //wd.findElement(By.name("name"));
 
-        // By link text a href
+        //By name
+        wd.findElement(By.name("name"));
+
+        //By link text a href
         wd.findElement(By.linkText("HOME"));
-        wd.findElement(By.linkText("ABOUT"));
         wd.findElement(By.partialLinkText("HO"));
-
     }
-
     @Test
-    public void loginSuccess() {
-        // open form
-        // wd find item + click
-
+    public void loginSuccess(){
+        //open form
+        //wd find item + click
         WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
-        itemLogin.click();
+        itemLogin.click(); //selenium does click button login
 
-        // fill form
-        // find email + click + clear + type
+        //fill form
+        //find email + click + clear + type
         WebElement email = wd.findElement(By.name("email"));
         email.click();
         email.clear();
-        email.sendKeys("dsa+1@gmail.com");
+        email.sendKeys("dsa+8@gmail.com");
 
-        // find password + click +clear + type
+        //find email + click + clear + type
         WebElement password = wd.findElement(By.name("password"));
         password.click();
         password.clear();
         password.sendKeys("Qq12345$");
 
-        // submit  form
-        // find button login + click
+        //submit form (click "login")
+        //find button login + click
         List<WebElement> buttons = wd.findElements(By.tagName("button"));
         WebElement buttonLogin = buttons.get(0);
         buttonLogin.click();
 
         Assert.assertEquals("", "");
-        // ac ==exp
+        //ac == exp
     }
 
-    @Test
-    public void registrationSuccess() {
-        WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
-        itemLogin.click();
-
-        // fill form
-        // find email + click + clear + type
-        //   WebElement email = wd.findElement(By.name("email"));
-        //  email.click();
-        // email.clear();
-        // email.sendKeys("dsa+9@gmail.com");
-
-        // find password + click +clear + type
-        // WebElement password = wd.findElement(By.name("password"));
-        // password.click();
-        //  password.clear();
-        //  password.sendKeys("Qq123456$");
-
-        // submit  form
-        // find button login + click
-        //  List<WebElement> buttons = wd.findElements(By.tagName("button"));
-        //  WebElement buttonRegistration = buttons.get(1);
-        // buttonRegistration.click();
-
-
-    }
+    //homework
+//    @Test
+//    public void registrationSuccess(){
+//        WebElement login=wd.findElement(By.linkText("LOGIN"));
+//        login.click();
+//        WebElement email = wd.findElement(By.name("email"));
+//        email.click();
+//        email.clear();
+//        email.sendKeys("teddy1@gmail.com");
+//
+//        WebElement password = wd.findElement(By.name("password"));
+//        password.click();
+//        password.clear();
+//        password.sendKeys("Teddy1206$");
+//
+//        List<WebElement> buttons = wd.findElements (By.tagName("button"));
+//        WebElement buttonRegistration = buttons.get(1);
+//        buttonRegistration.click();
+//    }
 
     @Test
     public void ccslocatrstest() {
 
-
         wd.findElement(By.linkText("LOGIN")).click();
+        WebElement div = wd.findElement(By.tagName("div"));
+        WebElement headName = wd.findElement(By.tagName("h1"));
+        WebElement form = wd.findElement(By.tagName("form"));
 
-        wd.findElement(By.tagName("div"));
-        wd.findElement(By.cssSelector("div"));
-        wd.findElement(By.cssSelector("a"));
-        wd.findElement(By.cssSelector("input"));
-        wd.findElement(By.cssSelector("button"));
+        WebElement root = wd.findElement(By.cssSelector("#root")); //id
+        WebElement container = wd.findElement(By.cssSelector(".container")); //class
+        WebElement el = wd.findElement(By.cssSelector("div#root.container"));
+        WebElement el1 = wd.findElement(By.cssSelector("div[id='root'][class='container']"));
+        WebElement el2 = wd.findElement(By.cssSelector(".active")); //class
 
-        wd.findElement(By.className("container"));
-        wd.findElement(By.cssSelector(".container"));
-        wd.findElement(By.cssSelector(".active"));
-        wd.findElement(By.cssSelector("[class = 'active']"));
+        WebElement el3 = wd.findElement(By.cssSelector("[placeholder ^='Pass']")); //starts
+        WebElement el4 = wd.findElement(By.cssSelector("[placeholder *='ass']")); //contains
+        WebElement el5 = wd.findElement(By.cssSelector("[placeholder $='ord']")); //ends
 
-        wd.findElement(By.cssSelector("#root"));
-        wd.findElement(By.cssSelector("[id=\"root\"]"));
+        WebElement el6 = wd.findElement(By.cssSelector("[id='root']"));
+        WebElement el7 = wd.findElement(By.cssSelector("[class='container']"));
 
-        wd.findElement(By.cssSelector("[id='root']"));
+        WebElement head3 = wd.findElement(By.cssSelector("[href='/login']"));
+        WebElement head4 = wd.findElement(By.cssSelector("a[href='/login']"));
 
+        WebElement el8 = wd.findElement(By.cssSelector("[name='email']"));
+        WebElement el9 = wd.findElement(By.cssSelector("input[name='email']"));
 
-        wd.findElement(By.cssSelector("[href='/login']"));
-        wd.findElement(By.cssSelector("[href$='/login']"));
+        WebElement el10 = wd.findElement(By.cssSelector("[name='login']"));
+        WebElement el11 = wd.findElement(By.cssSelector("button[name='login']"));
 
+        // WebElement el10 = wd.findElement(By.cssSelector("[name='registration']"));
+        //el10.click();
 
-        wd.findElement(By.cssSelector("[placeholder ='Password']"));
-        wd.findElement(By.cssSelector("[placeholder ^='Pass']"));
+        // WebElement button_reg = wd.findElement(By.cssSelector("form :last-child"));
+        // button_reg.click();
 
-        wd.findElement(By.cssSelector("[placeholder *='ass']"));
+        WebElement email = wd.findElement(By.cssSelector("form :first-child"));
+        email.click();
+        email.clear();
+        email.sendKeys("dsa+2@gmail.com");
 
-        wd.findElement(By.cssSelector("[placeholder $='ord']"));
+        WebElement el12 = wd.findElement(By.cssSelector("form :nth-child(2)"));
+        el12.click();
+        el12.clear();
+        el12.sendKeys("Qq12345$");
 
-
-        wd.findElement(By.cssSelector("div#root.container"));
-        wd.findElement(By.cssSelector("div[id='root'][class='container']"));
-
-        wd.findElement(By.cssSelector("a[href='/login']"));
-
-        wd.findElement(By.cssSelector("input[name='email']"));
-
-        wd.findElement(By.cssSelector("button[name='login']"));
-
-
-        wd.findElement(By.cssSelector("form *:last-child"));
-        wd.findElement(By.cssSelector("div script:last-child"));
-        wd.findElement(By.cssSelector("div script:last-child"));
+        WebElement button_log = wd.findElement(By.cssSelector("form :nth-child(4)"));
+        button_log.click();
 
 
-    }
-
-    @AfterMethod
-    public void postCondition() {
-        // close browser
+        //  @AfterMethod
+        //  public void postCondition () {
+        //close browser
         // wd.quit();
     }
 }
